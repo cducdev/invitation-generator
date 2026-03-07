@@ -82,3 +82,23 @@ npm run server
 ## Healthcheck
 
 - Endpoint kiểm tra trạng thái server: `/api/health`
+
+## Alternate CodeEntryPage component
+
+Trong repo gốc (đã push lên GitHub) tập tin `src/components/CodeEntryPage.jsx` là
+phiên bản chính thức dùng cho chức năng thiệp mời. Tuy nhiên bạn có thể thấy
+bản được chỉnh sửa cục bộ cho các mục đích khác (ví dụ: làm bài kiểm tra) – nội
+nội dung hiện tại được lưu trong `src/components/CodeEntryPage.backup.jsx`.
+
+Nếu muốn sử dụng lại (hoặc thử) phiên bản phụ này, chỉ cần sao chép/đổi tên:
+
+```bash
+cp src/components/CodeEntryPage.backup.jsx src/components/CodeEntryPage.jsx
+```
+
+và rebuild ứng dụng. Sau đó đừng quên đẩy lại `CodeEntryPage.jsx` chính thức lên
+GitHub nếu bạn đang làm việc với remote.
+
+Đây chỉ là một phương án tạm, bạn có thể giữ nhiều biến thể khác nhau bằng cách
+giữ các file `.backup.jsx` hoặc `*.alt.jsx`, sau đó chọn phiên bản bằng thao
+tác sao chép như trên.

@@ -2,6 +2,17 @@
 
 Ứng dụng tạo và gửi thiệp mời cá nhân hoá theo mã khách mời.
 
+## Lưu ý quan trọng
+
+**Cảnh báo bảo mật:** Toàn bộ mã nguồn của dự án này được vibe code và chưa được kiểm tra kỹ lưỡng về bảo mật. Điều này có nghĩa là có thể tồn tại các lỗ hổng bảo mật nghiêm trọng, bao gồm nhưng không giới hạn ở:
+
+- Lỗ hổng injection (SQL, XSS, v.v.)
+- Xử lý dữ liệu không an toàn
+- Thiếu xác thực đầu vào
+- Các vấn đề bảo mật khác có thể dẫn đến rủi ro cho dữ liệu người dùng
+
+**Khuyến nghị:** Không sử dụng ứng dụng này trong môi trường production hoặc với dữ liệu nhạy cảm. Nếu bạn muốn sử dụng, hãy tự kiểm tra và cải thiện bảo mật trước. Tác giả không chịu trách nhiệm về bất kỳ hậu quả nào phát sinh từ việc sử dụng mã nguồn này.
+
 ## Stack hiện tại
 
 - Frontend: React + Vite + React Router

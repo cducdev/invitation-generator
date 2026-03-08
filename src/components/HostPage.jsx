@@ -439,6 +439,16 @@ VIP01 - Gia đình C`}
 								>
 									Gửi mã thiệp này cho khách mời. Họ sẽ nhập
 									mã thiệp và mã khách của họ để xem thiệp.
+									<br />
+									<strong>Link nhập mã:</strong>{" "}
+									<a
+										href={baseUrl}
+										target="_blank"
+										rel="noopener noreferrer"
+										style={{ color: "#3b82f6" }}
+									>
+										{baseUrl}
+									</a>
 								</div>
 								<button
 									type="button"

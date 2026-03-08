@@ -104,6 +104,7 @@ export function GuestPage() {
 			return {
 				display: `${matchedGuest.name} (${matchedGuest.id})`,
 				imageUrl: matchedGuest.imageUrl || "",
+				wishes: matchedGuest.wishes || "",
 			};
 		}
 		return { display: "" };

@@ -25,6 +25,7 @@ export function HostPage() {
 	const [generatedLink, setGeneratedLink] = useState("");
 	const [pageIndex, setPageIndex] = useState(0);
 	const [guestImages, setGuestImages] = useState({});
+	const [guestWishes, setGuestWishes] = useState({});
 
 	const parsedGuests = useMemo(
 		() => parseGuestList(guestListText),
@@ -36,8 +37,12 @@ export function HostPage() {
 			return { display: "<tên khách / số thứ tự>" };
 		}
 		const g = parsedGuests[0];
-		return { display: `${g.name} (${g.id})` };
-	}, [parsedGuests]);
+		return {
+			display: `${g.name} (${g.id})`,
+			imageUrl: guestImages[g.id] || "",
+			wishes: guestWishes[g.id] || "",
+		};
+	}, [parsedGuests, guestImages, guestWishes]);
 
 	const baseUrl = useMemo(() => {
 		if (typeof window === "undefined") return "";
@@ -56,6 +61,14 @@ export function HostPage() {
 	const handleGuestImageChange = (id) => (e) => {
 		const value = e.target.value;
 		setGuestImages((prev) => ({
+			...prev,
+			[id]: value,
+		}));
+	};
+
+	const handleGuestWishesChange = (id) => (e) => {
+		const value = e.target.value;
+		setGuestWishes((prev) => ({
 			...prev,
 			[id]: value,
 		}));
@@ -84,11 +97,18 @@ export function HostPage() {
 		const config = {
 			t: templateId,
 			e: event,
-			g: parsedGuests.map(({ id, name }) => ({
-				id,
-				name,
-				imageUrl: guestImages[id] || "",
-			})),
+			g: parsedGuests.map(({ id, name }) => {
+				const guest = {
+					id,
+					name,
+					imageUrl: guestImages[id] || "",
+				};
+				// Thêm wishes nếu có, nhưng vẫn đảm bảo tương thích với định dạng cũ
+				if (guestWishes[id]) {
+					guest.wishes = guestWishes[id];
+				}
+				return guest;
+			}),
 		};
 
 		try {
@@ -360,12 +380,12 @@ VIP01 - Gia đình C`}
 
 						{parsedGuests.length > 0 && (
 							<div className="field">
-								<label>Ảnh cho từng khách (tùy chọn)</label>
+								<label>
+									Ảnh và lời chúc cho từng khách (tùy chọn)
+								</label>
 								<small>
-									Nếu bạn có ảnh riêng cho từng khách, hãy
-									nhập link ảnh tương ứng. Nếu bỏ trống, thiệp
-									sẽ dùng ảnh chung (nếu có) hoặc không hiển
-									thị ảnh.
+									Nhập link ảnh riêng (nếu có) và lời chúc cho
+									từng khách mời.
 								</small>
 								{parsedGuests.map((g) => (
 									<div
@@ -374,6 +394,8 @@ VIP01 - Gia đình C`}
 										style={{
 											marginTop: "4px",
 											marginBottom: "4px",
+											paddingLeft: "12px",
+											borderLeft: "3px solid #ddd",
 										}}
 									>
 										<small>
@@ -386,6 +408,17 @@ VIP01 - Gia đình C`}
 											onChange={handleGuestImageChange(
 												g.id,
 											)}
+										/>
+										<textarea
+											placeholder="Lời chúc hoặc lời mời riêng cho khách này..."
+											value={guestWishes[g.id] || ""}
+											onChange={handleGuestWishesChange(
+												g.id,
+											)}
+											style={{
+												marginTop: "4px",
+												minHeight: "60px",
+											}}
 										/>
 									</div>
 								))}

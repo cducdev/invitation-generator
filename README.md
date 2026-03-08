@@ -83,6 +83,39 @@ npm run server
 
 - Endpoint kiểm tra trạng thái server: `/api/health`
 
+## Lời chúc riêng cho từng khách (Guest Wishes)
+
+Kể từ phiên bản này, bạn có thể thêm lời chúc hoặc lời mời riêng cho từng khách mời trong thiệp:
+
+- Ở trang **Tạo thiệp** (host page), trong phần "Ảnh và lời chúc cho từng khách":
+    - Nhập lời chúc riêng cho từng khách (tùy chọn)
+    - Lời chúc sẽ được hiển thị dưới lời mời chung trên thiệp
+
+### JSON Format (Backward Compatible)
+
+Dữ liệu khách mời với lời chúc:
+
+```json
+{
+  "id": "invitation_id",
+  "t": "classic",
+  "e": {
+    "eventTitle": "Thiệp mời",
+    "hostMessage": "Lời mời chung..."
+  },
+  "g": [
+    {
+      "id": "001",
+      "name": "Tên khách",
+      "imageUrl": "https://...",
+      "wishes": "Lời chúc riêng cho khách này (tùy chọn)"
+    }
+  ]
+}
+```
+
+**Lưu ý bảo mật về dữ liệu cũ:** Nếu bạn có file JSON thiệp cũ mà không có field `wishes`, ứng dụng vẫn hoạt động bình thường (backward compatible). Khi import lại hoặc tạo mới, bạn có thể thêm lời chúc nếu muốn.
+
 ## Alternate CodeEntryPage component
 
 Trong repo gốc (đã push lên GitHub) tập tin `src/components/CodeEntryPage.jsx` là

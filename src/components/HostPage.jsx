@@ -336,11 +336,25 @@ VIP01 - Gia đình C`}
 								}
 							/>
 							<small>
-								Mỗi dòng một khách, có thể dùng dấu{" "}
-								<strong>-</strong>, <strong>|</strong> hoặc
-								khoảng trắng để ngăn cách mã và tên. Khách có
-								thể nhập <strong>mã</strong> hoặc{" "}
-								<strong>tên</strong> để xem đúng thiệp của mình.
+								<strong>Định dạng bắt buộc:</strong> Mỗi dòng
+								một khách theo format:{" "}
+								<code>
+									[Mã khách] [Dấu ngăn cách] [Tên khách]
+								</code>
+								<br />• Dấu ngăn cách: <code>-</code> hoặc{" "}
+								<code>|</code> hoặc khoảng trắng
+								<br />
+								• Ví dụ:
+								<br />
+								<code>001 - Nguyễn Văn A</code>
+								<br />
+								<code>002 | Trần Thị B</code>
+								<br />
+								<code>VIP01 Gia đình C</code>
+								<br />
+								<strong>Lưu ý:</strong> Mã khách phải là duy
+								nhất trong danh sách này. Khách sẽ dùng mã này
+								để xem thiệp.
 							</small>
 						</div>
 
@@ -435,6 +449,144 @@ VIP01 - Gia đình C`}
 								</button>
 							</div>
 						)}
+					</div>
+
+					{/* Hướng dẫn sử dụng */}
+					<div className="card" style={{ marginTop: 24 }}>
+						<h2>Hướng dẫn sử dụng toàn bộ website</h2>
+						<details>
+							<summary
+								style={{
+									cursor: "pointer",
+									fontWeight: "bold",
+								}}
+							>
+								📋 Cách tạo và gửi thiệp mời
+							</summary>
+							<div style={{ marginTop: 12, lineHeight: 1.6 }}>
+								<h4>1. Tạo thiệp mời</h4>
+								<ul>
+									<li>Chọn mẫu thiệp (template) phù hợp</li>
+									<li>
+										Điền thông tin sự kiện: tiêu đề, lời
+										mời, thời gian, địa điểm
+									</li>
+									<li>
+										Nhập danh sách khách mời (mỗi dòng: mã
+										khách - tên khách)
+									</li>
+									<li>Tùy chọn: thêm ảnh cho từng khách</li>
+									<li>
+										Nhấn "Tạo thiệp" để lưu và nhận mã thiệp
+									</li>
+								</ul>
+
+								<h4>2. Gửi thiệp cho khách</h4>
+								<ul>
+									<li>
+										Sao chép mã thiệp hiển thị (VD: abc123)
+									</li>
+									<li>
+										Gửi mã thiệp cho từng khách qua
+										chat/email
+									</li>
+									<li>
+										Khách sẽ nhập mã thiệp và mã khách của
+										họ để xem thiệp cá nhân
+									</li>
+								</ul>
+
+								<h4>3. Khách xem thiệp</h4>
+								<ul>
+									<li>Khách vào trang chủ website</li>
+									<li>Nhập mã thiệp (từ bạn gửi)</li>
+									<li>Nhập mã khách (số thứ tự của họ)</li>
+									<li>
+										Nhấn "Xem thiệp của tôi" để xem thiệp cá
+										nhân
+									</li>
+								</ul>
+							</div>
+						</details>
+
+						<details style={{ marginTop: 16 }}>
+							<summary
+								style={{
+									cursor: "pointer",
+									fontWeight: "bold",
+								}}
+							>
+								🔧 Tính năng nâng cao
+							</summary>
+							<div style={{ marginTop: 12, lineHeight: 1.6 }}>
+								<h4>Import/Export thiệp</h4>
+								<ul>
+									<li>
+										Tải file JSON từ máy để khôi phục thiệp
+										cũ
+									</li>
+									<li>
+										Thiệp được lưu dưới dạng file JSON trong
+										thư mục data/invitations
+									</li>
+								</ul>
+
+								<h4>Preview thiệp</h4>
+								<ul>
+									<li>
+										Xem trước thiệp với thông tin khách đầu
+										tiên trong danh sách
+									</li>
+									<li>
+										Chuyển trang để xem các trang khác nhau
+										của thiệp
+									</li>
+								</ul>
+
+								<h4>Chạy local</h4>
+								<ul>
+									<li>
+										Terminal 1:{" "}
+										<code>npm run server:dev</code>
+									</li>
+									<li>
+										Terminal 2: <code>npm run dev</code>
+									</li>
+									<li>Truy cập http://localhost:3000</li>
+								</ul>
+							</div>
+						</details>
+
+						<details style={{ marginTop: 16 }}>
+							<summary
+								style={{
+									cursor: "pointer",
+									fontWeight: "bold",
+								}}
+							>
+								⚠️ Lưu ý quan trọng
+							</summary>
+							<div style={{ marginTop: 12, lineHeight: 1.6 }}>
+								<ul>
+									<li>
+										Mã khách phải là duy nhất trong một
+										thiệp
+									</li>
+									<li>
+										Một khách có thể có mặt trong nhiều
+										thiệp khác nhau
+									</li>
+									<li>
+										Website này được phát triển cho mục đích
+										demo, chưa kiểm tra bảo mật đầy đủ
+									</li>
+									<li>
+										Không sử dụng cho dữ liệu nhạy cảm trong
+										môi trường production
+									</li>
+								</ul>
+							</div>
+						</details>
 					</div>
 
 					<div>
